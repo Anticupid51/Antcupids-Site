@@ -21,8 +21,8 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "en"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
-	subtitle: "One demo website",
+	title: "Anticupid",
+	subtitle: "Anticupid's Blog",
 
 	lang: SITE_LANG,
 
@@ -86,13 +86,13 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // 在主页显示自定义文本
-			title: "Beautiful Mizuki!", // 主页横幅主标题
+			title: "Sleepy Cupid", // 主页横幅主标题
 
 			subtitle: [
-				"A Showcase Demo Site",
-				"Carousel Highlight: Innovation",
-				"Carousel Focus: User Experience",
-				"Carousel Spot: Core Advantages",
+				"Welcome to Anticupid's world!",
+				"Cupid gets an average of 5 hours of sleep per day.",
+				"90% of Canadians become friends with Anticupid",
+				"Cupid is a Florida man (((ꏿwꏿ;)))", // Add more later cupid
 			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
@@ -166,7 +166,7 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	position: "center", // 壁纸位置，等同于 object-position
 	carousel: {
 		enable: true, // 启用轮播
-		interval: 1, // 轮播间隔时间（秒）
+		interval: 10, // 轮播间隔时间（秒）
 	},
 	zIndex: -1, // 层级，确保壁纸在背景层
 	opacity: 0.8, // 壁纸透明度
@@ -177,7 +177,7 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
+		// Supports custom navigation bar links and multi-level menus. Version 3.1 adds
 		{
 			name: "Links",
 			url: "/links/",
@@ -185,36 +185,20 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "GitHub",
-					url: "https://github.com/matsuzaka-yuki/Mizuki",
+					url: "https://github.com/Anticupid51/Anticupid51",
 					external: true,
 					icon: "fa6-brands:github",
 				},
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
-					external: true,
-					icon: "fa6-brands:bilibili",
-				},
-				{
-					name: "Gitee",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
-					external: true,
-					icon: "mdi:git",
-				},
+
 			],
 		},
 		{
-			name: "My",
+			name: "Personal",
 			url: "/content/",
 			icon: "material-symbols:person",
 			children: [
-				LinkPreset.Anime,
 				LinkPreset.Diary,
-				{
-					name: "Gallery",
-					url: "/albums/",
-					icon: "material-symbols:photo-library",
-				},
+
 			],
 		},
 		{
@@ -224,7 +208,7 @@ export const navBarConfig: NavBarConfig = {
 			children: [LinkPreset.About, LinkPreset.Friends],
 		},
 		{
-			name: "Others",
+			name: "Misc",
 			url: "#",
 			icon: "material-symbols:more-horiz",
 			children: [
@@ -249,29 +233,24 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "Mizuki",
-	bio: "The world is big, you have to go and see",
+	avatar: "assets/images/Profile.jpg", // Relative to the /src directory. If it starts with '/', it is relative to the /public directory
+	name: "Anticupid",
+	bio: "Cybersecurity Enthusiast | Bug Bounty Hunter | Insomniac",
 	links: [
 		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
-		},
-		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			name: "HackTheBox",
+			icon: "simple-icons:hackthebox",
+			url: "https://app.hackthebox.com/profile/overview",
 		},
 		{
 			name: "Discord",
 			icon: "fa6-brands:discord",
-			url: "https://discord.gg/MqW6TcQtVM",
+			url: "https://discord.com/users/179454498429730816",
+		},
+		{
+			name: "GitHub",
+			icon: "fa6-brands:github", // Done for now, maybe add 1 more later on?
+			url: "https://github.com/Anticupid51",
 		},
 	],
 };
@@ -283,66 +262,66 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	// 注意：某些样式（如背景颜色）已被覆盖，请参阅 astro.config.mjs 文件。
-	// 请选择深色主题，因为此博客主题目前仅支持深色背景
+	// NOTE: Some styles (like background color) have been overridden, see astro.config.mjs file.
+	// Please select a dark theme, as this blog theme currently only supports dark backgrounds
 	theme: "github-dark",
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	enable: false, // Enable commenting. When set to false, the comment component will not be displayed in the article area.
 	twikoo: {
 		envId: "https://twikoo.vercel.app",
-		lang: "en", // 设置 Twikoo 评论系统语言为英文
+		lang: "en", // Set Twikoo comment system language to English
 	},
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "Announcement", // 公告标题
-	content: "Welcome to my blog! This is a sample announcement.", // 公告内容
-	closable: true, // 允许用户关闭公告
+	title: "Announcement", // Announcement title
+	content: "Welcome to the blog, it's new so don't judge too much.", // Announcement content
+	closable: true, // Allow users to close announcements
 	link: {
-		enable: true, // 启用链接
-		text: "Learn More", // 链接文本
-		url: "/about/", // 链接 URL
-		external: false, // 内部链接
+		enable: true, // Enable link
+		text: "Learn More", // link text
+		url: "/about/", // Link URL
+		external: false, // Internal Link
 	},
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // 启用音乐播放器功能
+	enable: true, // Enable the music player feature
 };
 
 export const footerConfig: FooterConfig = {
-	enable: false, // 是否启用Footer HTML注入功能
+	enable: false, // Whether to enable Footer HTML injection function
 };
 
-// 直接编辑 FooterConfig.html 文件来添加备案号等自定义内容
+// Directly edit the FooterConfig.html file to add custom content such as the registration number
 
 /**
- * 侧边栏布局配置
- * 用于控制侧边栏组件的显示、排序、动画和响应式行为
+ * Sidebar layout configuration
+ * Used to control the display, sorting, animation and responsive behavior of sidebar components
  */
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
-	// 是否启用侧边栏功能
+	// Whether to enable the sidebar function
 	enable: true,
 
-	// 侧边栏位置：左侧或右侧
+	// Sidebar position: left or right
 	position: "left",
 
-	// 侧边栏组件配置列表
+	// Sidebar component configuration list
 	components: [
 		{
-			// 组件类型：用户资料组件
+			// Component Type: User Profile Component
 			type: "profile",
-			// 是否启用该组件
+			// Whether to enable this component
 			enable: true,
-			// 组件显示顺序（数字越小越靠前）
+			// Component display order (smaller numbers appear first)
 			order: 1,
-			// 组件位置："top" 表示固定在顶部
+			// Component position: "top" means fixed at the top
 			position: "top",
-			// CSS 类名，用于应用样式和动画
+			// CSS class names, used to apply styles and animations
 			class: "onload-animation",
-			// 动画延迟时间（毫秒），用于错开动画效果
+			// Animation delay time (milliseconds), used to stagger animation effects
 			animationDelay: 0,
 		},
 		{
@@ -399,28 +378,28 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		},
 	],
 
-	// 默认动画配置
+	// Default animation configuration
 	defaultAnimation: {
-		// 是否启用默认动画
+		// Whether to enable default animation
 		enable: true,
-		// 基础延迟时间（毫秒）
+		// Basic delay time (milliseconds)
 		baseDelay: 0,
-		// 递增延迟时间（毫秒），每个组件依次增加的延迟
+		// Incremental delay (in milliseconds), each component increases the delay in turn
 		increment: 50,
 	},
 
-	// 响应式布局配置
+	// Responsive layout configuration
 	responsive: {
-		// 断点配置（像素值）
+		// Breakpoint configuration (pixel value)
 		breakpoints: {
-			// 移动端断点：屏幕宽度小于768px
+			// Mobile breakpoint: screen width is less than 768px
 			mobile: 768,
-			// 平板端断点：屏幕宽度小于1024px
+			// Tablet breakpoint: screen width less than 1024px
 			tablet: 1024,
-			// 桌面端断点：屏幕宽度小于1280px
+			// Desktop breakpoint: screen width less than 1280px
 			desktop: 1280,
 		},
-		// 不同设备的布局模式
+		// Layout modes for different devices
 		//hidden:不显示侧边栏(桌面端)   drawer:抽屉模式(移动端不显示)   sidebar:显示侧边栏
 		layout: {
 			// 移动端：抽屉模式
@@ -434,7 +413,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 
 export const sakuraConfig: SakuraConfig = {
-	enable: false, // 默认关闭樱花特效
+	enable: false, // The cherry blossom effect is turned off by default. No real reason for this as of yet keep off.
 	sakuraNum: 21, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
@@ -457,7 +436,7 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: true, // 启用看板娘
+	enable: false, // Enable poster girl
 	models: ["/pio/models/pio/model.json"], // 默认模型路径
 	position: "left", // 默认位置在右侧
 	width: 280, // 默认宽度
@@ -465,7 +444,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		welcome: "Welcome to Anticupids Website!", // 欢迎词
 		touch: [
 			"What are you doing?",
 			"Stop touching me!",
@@ -479,7 +458,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 	},
 };
 
-// 导出所有配置的统一接口
+// Export all configurations to a unified interface
 export const widgetConfigs = {
 	profile: profileConfig,
 	announcement: announcementConfig,
@@ -491,7 +470,7 @@ export const widgetConfigs = {
 } as const;
 
 export const umamiConfig = {
-	enabled: false, // 是否显示Umami统计
+	enabled: false, // Whether to display Umami statistics
 	shareURL: "https://us.umami.is/api/share/ABCD1234", //你的分享API,支持自建服务
 	scripts: `
 <script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>
