@@ -132,7 +132,7 @@ async function processBangumiData(data: any, status: string) {
 let animeList = [];
 if (ANIME_MODE === "local") {
 	// 使用本地配置
-	animeList = localAnimeList;
+	animeList = false;
 } else {
 	// 使用Bangumi API（默认模式）
 	// 获取与处理在看列表（type=3）看过列表（type=2）
