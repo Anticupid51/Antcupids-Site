@@ -129,25 +129,6 @@ async function processBangumiData(data: any, status: string) {
 }
 
 // 根据模式获取番剧列表
-let animeList = [];
-if (ANIME_MODE === "local") {
-	// 使用本地配置
-	animeList = false;
-} else {
-	// 使用Bangumi API（默认模式）
-	// 获取与处理在看列表（type=3）看过列表（type=2）
-	const watchingData = await fetchBangumiCollection(BANGUMI_USER_ID, 2, 3);
-	const completedData = await fetchBangumiCollection(BANGUMI_USER_ID, 2, 2);
-
-	const watchingList = watchingData
-		? await processBangumiData(watchingData, "watching")
-		: [];
-	const completedList = completedData
-		? await processBangumiData(completedData, "completed")
-		: [];
-
-	animeList = [...watchingList, ...completedList];
-}
 
 // 获取状态的翻译文本和样式
 function getStatusInfo(status: string) {
@@ -183,19 +164,6 @@ function getStatusInfo(status: string) {
 }
 
 // 计算统计数据
-const stats = {
-	total: animeList.length,
-	watching: animeList.filter((anime) => anime.status === "watching").length,
-	completed: animeList.filter((anime) => anime.status === "completed").length,
-	avgRating: (() => {
-		const ratedAnime = animeList.filter((anime) => anime.rating > 0);
-		if (ratedAnime.length === 0) return "0.0";
-		return (
-			ratedAnime.reduce((sum, anime) => sum + anime.rating, 0) /
-			ratedAnime.length
-		).toFixed(1);
-	})(),
-};
 ---
 
 <MainGridLayout title={i18n(I18nKey.anime)} description={i18n(I18nKey.animeSubtitle)}>
@@ -249,54 +217,7 @@ const stats = {
         </div>
       </div>
 
-      <!-- 动漫列表 -->
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-4">
-          {i18n(I18nKey.animeList)}
-        </h2>
-        
-        {ANIME_MODE !== 'local' && BANGUMI_USER_ID === 'your-user-id' ? (
-          <div class="text-center py-12">
-            <div class="text-5xl mb-4">😢</div>
-            <h3 class="text-xl font-medium text-black/80 dark:text-white/80 mb-2">
-              {i18n(I18nKey.animeEmpty)}
-            </h3>
-            <p class="text-black/60 dark:text-white/60">
-              请在 src/config.ts 文件中设置你的 Bangumi 用户ID
-            </p>
-          </div>
-        ) : animeList.length > 0 ? (
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-            {animeList.map(anime => {
-              const statusInfo = getStatusInfo(anime.status);
-              const progressPercent = anime.totalEpisodes > 0 ? (anime.progress / anime.totalEpisodes) * 100 : 0;
-              
-              return (
-                <div class="group relative bg-[var(--card-bg)] border border-[var(--line-divider)] rounded-[var(--radius-large)] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                  <!-- 封面区域 - 竖屏比例 -->
-                  <div class="relative aspect-[2/3] overflow-hidden">
-                    <a href={anime.link} target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                      <ImageWrapper 
-                        src={anime.cover} 
-                        alt={anime.title}
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                          <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                    
-                    <!-- 状态标签 -->
-                    <div class={`absolute top-2 left-2 px-2 py-1 rounded-md text-xs font-medium ${statusInfo.class}`}>
-                      <span class="mr-1">{statusInfo.icon}</span>
-                      <span>{statusInfo.text}</span>
-                    </div>
+     
                     
                     <!-- 评分 -->
                     <div class="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1">
